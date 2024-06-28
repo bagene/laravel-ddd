@@ -18,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/**/.DS_Store
+/**/.vscode
+/**/.idea
+/coverage_report
