@@ -13,6 +13,7 @@
     "require-dev": {
         "coduo/php-matcher": "^6.0",
         "fakerphp/faker": "^1.23",
+        "knuckleswtf/scribe": "^4.37",
         "larastan/larastan": "^2.0",
         "laravel/pint": "^1.16",
         "laravel/sail": "^1.26",
@@ -37,7 +38,9 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "cp .hooks/pre-commit .git/hooks/pre-commit",
+            "chmod +x .git/hooks/pre-commit"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
