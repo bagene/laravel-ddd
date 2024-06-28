@@ -4,8 +4,11 @@
 echo "*** Start pre-commit hook ***"
 echo "*****************************"
 
+PHP_STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR  -- '*.php' | sed 's| |\\ |g')
+
 echo "*** Run laravel pint on staged files ***"
 ./vendor/bin/pint --dirty
+git add $PHP_STAGED_FILES
 EXIT_CODE=$?
 if [ "$EXIT_CODE" -gt 0 ]
 then
