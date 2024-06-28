@@ -12,5 +12,6 @@ abstract class FeatureIntegrationTestCase extends BaseTestCase
     use RefreshDatabase;
 
     public const POST_METHOD = 'POST';
+
     public const GET_METHOD = 'GET';
 }

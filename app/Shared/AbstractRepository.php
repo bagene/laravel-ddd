@@ -18,8 +18,7 @@ abstract class AbstractRepository implements RepositoryInterface
     public function __construct(
         protected DatabaseManager $database,
         protected Model $model,
-    ) {
-    }
+    ) {}
 
     public function transaction(callable $callback): mixed
     {
@@ -78,7 +77,7 @@ abstract class AbstractRepository implements RepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function findBy(string $column, mixed $value, array $with = []): ?Model
     {
@@ -96,11 +95,12 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         /** @var bool $result */
         $result = $this->transaction(fn () => $model->delete());
+
         return $result;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function search(array $pagination = [], array $filters = [], array $with = []): LengthAwarePaginator
     {
@@ -111,7 +111,7 @@ abstract class AbstractRepository implements RepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(array $filters = []): Collection
     {

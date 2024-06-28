@@ -15,8 +15,7 @@ final class AuthResponse implements CommandResponseInterface
     private function __construct(
         private readonly string $token,
         private readonly int $expiresIn,
-    ) {
-    }
+    ) {}
 
     public function getToken(): string
     {

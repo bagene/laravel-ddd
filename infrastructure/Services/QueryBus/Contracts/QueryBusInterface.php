@@ -9,7 +9,7 @@ interface QueryBusInterface
     public function ask(QueryInterface $query): QueryResponseInterface;
 
     /**
-     * @param array<class-string,class-string> $map
+     * @param  array<class-string,class-string>  $map
      */
     public function map(array $map): void;
 }

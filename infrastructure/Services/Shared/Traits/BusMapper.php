@@ -7,7 +7,7 @@ namespace Infrastructure\Services\Shared\Traits;
 trait BusMapper
 {
     /**
-     * @param array<class-string,class-string> $map
+     * @param  array<class-string,class-string>  $map
      */
     public function map(array $map): void
     {

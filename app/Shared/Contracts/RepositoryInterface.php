@@ -24,7 +24,7 @@ interface RepositoryInterface
     public function find(string|int $id): ?Model;
 
     /**
-     * @param string[] $with
+     * @param  string[]  $with
      */
     public function findBy(string $column, mixed $value, array $with = []): ?Model;
 
@@ -38,14 +38,14 @@ interface RepositoryInterface
      *    pageName?: string,
      *    total?: int,
      * } $pagination
-     * @param array<string, mixed> $filters
-     * @param string[] $with
+     * @param  array<string, mixed>  $filters
+     * @param  string[]  $with
      * @return LengthAwarePaginator<Model>
      */
     public function search(array $pagination = [], array $filters = [], array $with = []): LengthAwarePaginator;
 
     /**
-     * @param array<string, mixed> $filters
+     * @param  array<string, mixed>  $filters
      * @return Collection<int, Model>
      */
     public function get(array $filters = []): Collection;

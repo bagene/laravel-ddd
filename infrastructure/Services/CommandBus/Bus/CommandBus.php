@@ -15,16 +15,14 @@ final readonly class CommandBus implements CommandBusInterface
 {
     use BusMapper;
 
-    public function __construct(private Dispatcher $bus)
-    {
-    }
+    public function __construct(private Dispatcher $bus) {}
 
     /**
      * @throws CommandNotFoundException
      */
     public function dispatch(CommandInterface $command): ?CommandResponseInterface
     {
-        if (!$this->bus->getCommandHandler($command)) {
+        if (! $this->bus->getCommandHandler($command)) {
             throw new CommandNotFoundException('Command Handler not found');
         }
 

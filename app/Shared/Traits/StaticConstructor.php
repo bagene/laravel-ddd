@@ -16,18 +16,13 @@ use Illuminate\Support\Str;
 trait StaticConstructor
 {
     /**
-     * @param array<string,mixed> $data
-     * @return static
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): static
     {
         return new static(...static::mapFields($data));
     }
 
-    /**
-     * @param Model $model
-     * @return static
-     */
     public static function fromModel(Model $model): static
     {
         return new static(...static::mapFields($model->toArray()));
@@ -44,11 +39,12 @@ trait StaticConstructor
         $route = $request->route();
         /** @var array<string,mixed> $queries */
         $queries = $request->query() ?: $route->parameters();
+
         return static::fromArray($queries);
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     protected static function mapFields(array $data): array

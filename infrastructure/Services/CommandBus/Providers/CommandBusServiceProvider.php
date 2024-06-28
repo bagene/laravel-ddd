@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Infrastructure\Services\CommandBus\Providers;
 
-use Infrastructure\Services\CommandBus\Bus\CommandBus;
 use Illuminate\Support\ServiceProvider;
-use Infrastructure\Services\CommandBus\Contracts\CommandBusInterface;
 use Illuminate\Support\Str;
+use Infrastructure\Services\CommandBus\Bus\CommandBus;
+use Infrastructure\Services\CommandBus\Contracts\CommandBusInterface;
 
 class CommandBusServiceProvider extends ServiceProvider
 {
@@ -35,14 +35,14 @@ class CommandBusServiceProvider extends ServiceProvider
         $commandPath = app_path('Commands');
         $commands = glob("$commandPath/**/**/*Command.php") ?: [];
         $commands = array_map(
-            fn ($dir) => Str::replace('/', "\\", 'App/' . Str::after($dir, 'app/')),
+            fn ($dir) => Str::replace('/', '\\', 'App/'.Str::after($dir, 'app/')),
             $commands,
         );
         $map = [];
 
         foreach ($commands as $file) {
             $commandClass = basename($file, '.php');
-            $handlerClass = $commandClass . 'Handler';
+            $handlerClass = $commandClass.'Handler';
 
             if (class_exists($commandClass) && class_exists($handlerClass)) {
                 $map[$commandClass] = $handlerClass;

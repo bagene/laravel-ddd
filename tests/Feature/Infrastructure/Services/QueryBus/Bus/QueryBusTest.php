@@ -25,7 +25,7 @@ final class QueryBusTest extends FeatureIntegrationTestCase
         $bus = $this->app->make(QueryBusInterface::class);
 
         $bus->map([
-            TestQuery::class => TestQueryHandler::class
+            TestQuery::class => TestQueryHandler::class,
         ]);
 
         $this->bus = $bus;
@@ -43,7 +43,8 @@ final class QueryBusTest extends FeatureIntegrationTestCase
         $this->expectException(QueryNotFoundException::class);
         $this->expectExceptionMessage('Query Handler not found');
 
-        $this->bus->ask(new class implements QueryInterface {
+        $this->bus->ask(new class implements QueryInterface
+        {
             use StaticConstructor;
         });
     }

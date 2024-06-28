@@ -18,7 +18,7 @@ trait ToArray
         $reflection = new \ReflectionClass($this);
         foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
             $methodName = $method->getName();
-            if ($method->isConstructor() || $method->isAbstract() || $method->isStatic() || 'toArray' === $methodName) {
+            if ($method->isConstructor() || $method->isAbstract() || $method->isStatic() || $methodName === 'toArray') {
                 continue;
             }
 

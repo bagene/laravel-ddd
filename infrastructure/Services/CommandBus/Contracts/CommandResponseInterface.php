@@ -6,6 +6,4 @@ namespace Infrastructure\Services\CommandBus\Contracts;
 
 use Infrastructure\Services\Shared\Contracts\BusResponseInterface;
 
-interface CommandResponseInterface extends BusResponseInterface
-{
-}
+interface CommandResponseInterface extends BusResponseInterface {}

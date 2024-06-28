@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Start pre-commit hook
+echo "*** Start pre-commit hook ***"
+echo "*****************************"
+
+echo "*** Run laravel pint on staged files ***"
+.vendor/bin/pint --dirty
+EXIT_CODE=$?
+if [ "$EXIT_CODE" -gt 0 ]
+then
+  echo "\e[31m*** Fix laravel pint errors ***\e[0m"
+  exit $EXIT_CODE
+fi
+echo "*** laravel pint finished without errors ***"
+
+echo "*** Run phpstan ***"
+composer lint
+EXIT_CODE=$?
+if [ "$EXIT_CODE" -gt 0 ]
+then
+  echo "\e[31m*** Fix phpstan errors ***\e[0m"
+  exit $EXIT_CODE
+fi
+echo "*** Phpstan finished without errors ***"
+
+echo "*** Run tests ***"
+composer test
+EXIT_CODE=$?
+if [ "$EXIT_CODE" -gt 0 ]
+then
+  echo "\e[31m*** Fix tests ***\e[0m"
+  exit $EXIT_CODE
+fi
+echo "*** Tests finished without errors"

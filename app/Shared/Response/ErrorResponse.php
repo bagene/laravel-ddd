@@ -15,8 +15,7 @@ final class ErrorResponse implements CommandResponseInterface, QueryResponseInte
     private function __construct(
         private readonly string $message,
         private readonly int $code,
-    ) {
-    }
+    ) {}
 
     public static function create(string $message, int $code): self
     {

@@ -46,6 +46,7 @@ class RepositoryServiceProvider extends ServiceProvider
                         "Domains\\$domain\\Contracts\\{$repositoryName}Interface",
                         "Domains\\$domain\\Repositories\\$repositoryName",
                     );
+
                     continue;
                 }
 

@@ -15,16 +15,14 @@ final readonly class QueryBus implements QueryBusInterface
 {
     use BusMapper;
 
-    public function __construct(private Dispatcher $bus)
-    {
-    }
+    public function __construct(private Dispatcher $bus) {}
 
     /**
      * @throws QueryNotFoundException
      */
     public function ask(QueryInterface $query): QueryResponseInterface
     {
-        if (!$this->bus->getCommandHandler($query)) {
+        if (! $this->bus->getCommandHandler($query)) {
             throw new QueryNotFoundException('Query Handler not found');
         }
 

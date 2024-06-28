@@ -13,7 +13,7 @@ final class PaginatedResponse implements QueryResponseInterface
     use StaticConstructor, ToArray;
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      * @param array{
      *     url: string,
      *     label: string,
@@ -34,8 +34,7 @@ final class PaginatedResponse implements QueryResponseInterface
         private readonly ?string $prevPageUrl,
         private readonly int $to,
         private readonly int $total,
-    ) {
-    }
+    ) {}
 
     public function getCurrentPage(): int
     {

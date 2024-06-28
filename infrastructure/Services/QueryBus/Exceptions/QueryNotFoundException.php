@@ -6,6 +6,4 @@ namespace Infrastructure\Services\QueryBus\Exceptions;
 
 use Exception;
 
-final class QueryNotFoundException extends Exception
-{
-}
+final class QueryNotFoundException extends Exception {}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ecdffd7647df5eea001f46149ee67ad",
+    "content-hash": "5c582df8da3d91eac3e6596e22b7147a",
     "packages": [
         {
             "name": "brick/math",
@@ -6725,6 +6725,177 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "aeon-php/calendar",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aeon-php/calendar.git",
+                "reference": "2cfc45a2cd28b78f1450d8155a1c62df2efe45de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aeon-php/calendar/zipball/2cfc45a2cd28b78f1450d8155a1c62df2efe45de",
+                "reference": "2cfc45a2cd28b78f1450d8155a1c62df2efe45de",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.1.10 || ~8.2"
+            },
+            "require-dev": {
+                "ext-bcmath": "*",
+                "ext-pcov": "*"
+            },
+            "suggest": {
+                "ext-bcmath": "Compare time units with high precision"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aeon\\": [
+                        "src/Aeon"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP type safe, immutable calendar library",
+            "keywords": [
+                "calendar",
+                "date",
+                "datetime",
+                "immutable",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/aeon-php/calendar/issues",
+                "source": "https://github.com/aeon-php/calendar/tree/1.0.9"
+            },
+            "time": "2023-08-29T09:47:37+00:00"
+        },
+        {
+            "name": "coduo/php-matcher",
+            "version": "6.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coduo/php-matcher.git",
+                "reference": "08c13757aca6433596557af6b0851ec254ab0a5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coduo/php-matcher/zipball/08c13757aca6433596557af6b0851ec254ab0a5f",
+                "reference": "08c13757aca6433596557af6b0851ec254ab0a5f",
+                "shasum": ""
+            },
+            "require": {
+                "aeon-php/calendar": "^1.0.6",
+                "coduo/php-to-string": "^3",
+                "doctrine/lexer": "^3.0",
+                "ext-filter": "*",
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "php": "~8.1 || ~8.2 || ~8.3"
+            },
+            "require-dev": {
+                "nikic/php-parser": "^4.0",
+                "openlss/lib-array2xml": "^1.0",
+                "phpunit/phpunit": "^10.4",
+                "symfony/cache": "^5.4|^6.4",
+                "symfony/expression-language": "^5.4|^6.4|^7.0",
+                "symfony/var-exporter": "^5.4|^6.4|^7.0"
+            },
+            "suggest": {
+                "openlss/lib-array2xml": "In order ot use Coduo\\PHPMatcher\\Matcher\\XmlMatcher",
+                "symfony/expression-language": "In order to use Coduo\\PHPMatcher\\Matcher\\ExpressionMatcher"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Coduo\\PHPMatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michał Dąbrowski",
+                    "email": "dabrowski@brillante.pl"
+                },
+                {
+                    "name": "Norbert Orzechowicz",
+                    "email": "norbert@orzechowicz.pl"
+                }
+            ],
+            "description": "PHP Matcher enables you to match values with patterns",
+            "keywords": [
+                "Match",
+                "json",
+                "matcher",
+                "tests"
+            ],
+            "support": {
+                "issues": "https://github.com/coduo/php-matcher/issues",
+                "source": "https://github.com/coduo/php-matcher/tree/6.0.15"
+            },
+            "time": "2024-04-25T21:08:03+00:00"
+        },
+        {
+            "name": "coduo/php-to-string",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coduo/php-to-string.git",
+                "reference": "e467de70e5e7403d969a05e853c7f480cde9fda4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coduo/php-to-string/zipball/e467de70e5e7403d969a05e853c7f480cde9fda4",
+                "reference": "e467de70e5e7403d969a05e853c7f480cde9fda4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "suggest": {
+                "ext-intl": "Required if you are going to use humanizer with locales different than en_EN"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Coduo\\ToString\\": "src/Coduo/ToString"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michał Dąbrowski",
+                    "email": "dabrowski@brillante.pl"
+                },
+                {
+                    "name": "Norbert Orzechowicz",
+                    "email": "norbert@orzechowicz.pl"
+                }
+            ],
+            "description": "Simple library that converts PHP value into strings",
+            "keywords": [
+                "php",
+                "string",
+                "to",
+                "to string"
+            ],
+            "support": {
+                "issues": "https://github.com/coduo/php-to-string/issues",
+                "source": "https://github.com/coduo/php-to-string/tree/3.2.1"
+            },
+            "time": "2023-03-28T10:10:37+00:00"
+        },
         {
             "name": "fakerphp/faker",
             "version": "v1.23.1",

@@ -6,6 +6,4 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
-abstract class UnitTestCase extends BaseTestCase
-{
-}
+abstract class UnitTestCase extends BaseTestCase {}

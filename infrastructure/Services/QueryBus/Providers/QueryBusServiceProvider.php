@@ -29,19 +29,20 @@ class QueryBusServiceProvider extends ServiceProvider
     {
         $this->mapQueries();
     }
+
     private function mapQueries(): void
     {
         $queryPath = app_path('Queries');
         $queries = glob("$queryPath/**/**/*Query.php") ?: [];
         $queries = array_map(
-            fn ($dir) => Str::replace('/', "\\", 'App/' . Str::after($dir, 'app/')),
+            fn ($dir) => Str::replace('/', '\\', 'App/'.Str::after($dir, 'app/')),
             $queries,
         );
         $map = [];
 
         foreach ($queries as $file) {
             $queryClass = basename($file, '.php');
-            $handlerClass = $queryClass . 'Handler';
+            $handlerClass = $queryClass.'Handler';
 
             if (class_exists($queryClass) && class_exists($handlerClass)) {
                 $map[$queryClass] = $handlerClass;

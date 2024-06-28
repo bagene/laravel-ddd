@@ -26,8 +26,7 @@ final readonly class UserResponse implements CommandResponseInterface, QueryResp
         private string $createdAt,
         private string $updatedAt,
         private ?string $lastLoginAt,
-    ) {
-    }
+    ) {}
 
     public function getFirstName(): string
     {

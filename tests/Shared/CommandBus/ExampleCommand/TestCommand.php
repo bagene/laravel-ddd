@@ -6,7 +6,6 @@ namespace Tests\Shared\CommandBus\ExampleCommand;
 
 use App\Shared\Traits\StaticConstructor;
 use Infrastructure\Services\CommandBus\Contracts\CommandInterface;
-use Infrastructure\Services\QueryBus\Contracts\QueryInterface;
 
 final class TestCommand implements CommandInterface
 {
