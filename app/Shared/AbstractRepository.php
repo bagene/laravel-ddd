@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 abstract class AbstractRepository implements RepositoryInterface
 {
@@ -34,11 +33,6 @@ abstract class AbstractRepository implements RepositoryInterface
             $this->database->rollBack();
             throw new DatabaseTransactionException($e->getMessage());
         }
-    }
-
-    public function findNextUuid(): string
-    {
-        return Str::uuid()->toString();
     }
 
     private function saveDTO(AbstractDTO $dto): void

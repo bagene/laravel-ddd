@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Infrastructure\Services\CommandBus\Bus;
 
+use App\Shared\Response\ErrorResponse;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Infrastructure\Services\CommandBus\Contracts\CommandBusInterface;
 use Infrastructure\Services\CommandBus\Contracts\CommandInterface;
@@ -20,7 +21,7 @@ final readonly class CommandBus implements CommandBusInterface
     /**
      * @throws CommandNotFoundException
      */
-    public function dispatch(CommandInterface $command): ?CommandResponseInterface
+    public function dispatch(CommandInterface $command): CommandResponseInterface|ErrorResponse|null
     {
         if (! $this->bus->getCommandHandler($command)) {
             throw new CommandNotFoundException('Command Handler not found');

@@ -14,58 +14,27 @@ final readonly class UserResponse implements CommandResponseInterface, QueryResp
     use StaticConstructor, ToArray;
 
     private function __construct(
-        private string $uuid,
-        private string $firstName,
-        private string $lastName,
+        private string $id,
+        private string $name,
         private string $email,
-        private string $address,
-        private string $phoneNumber,
-        private bool $isMarketing,
-        private bool $isAdmin,
-        private ?string $avatar,
+        private string $emailVerifiedAt,
         private string $createdAt,
         private string $updatedAt,
-        private ?string $lastLoginAt,
     ) {}
 
-    public function getFirstName(): string
+    public function getId(): string
     {
-        return $this->firstName;
+        return $this->id;
     }
 
-    public function getLastName(): string
+    public function getName(): string
     {
-        return $this->lastName;
+        return $this->name;
     }
 
     public function getEmail(): string
     {
         return $this->email;
-    }
-
-    public function getAddress(): string
-    {
-        return $this->address;
-    }
-
-    public function getPhoneNumber(): string
-    {
-        return $this->phoneNumber;
-    }
-
-    public function getIsMarketing(): bool
-    {
-        return $this->isMarketing;
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->isAdmin;
-    }
-
-    public function getAvatar(): ?string
-    {
-        return $this->avatar;
     }
 
     public function getCreatedAt(): string
@@ -78,13 +47,8 @@ final readonly class UserResponse implements CommandResponseInterface, QueryResp
         return $this->updatedAt;
     }
 
-    public function getUuid(): string
+    public function getEmailVerifiedAt(): string
     {
-        return $this->uuid;
-    }
-
-    public function getLastLoginAt(): ?string
-    {
-        return $this->lastLoginAt;
+        return $this->emailVerifiedAt;
     }
 }

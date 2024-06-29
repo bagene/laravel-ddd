@@ -12,7 +12,8 @@ git add $PHP_STAGED_FILES
 EXIT_CODE=$?
 if [ "$EXIT_CODE" -gt 0 ]
 then
-  echo "\e[31m*** Fix laravel pint errors ***\e[0m"
+  echo "\033[31m *** Fix laravel pint errors ***\e[0m"
+  echo "\033[31m *** Aborting commit ***"
   exit $EXIT_CODE
 fi
 echo "*** laravel pint finished without errors ***"
@@ -22,17 +23,32 @@ composer lint
 EXIT_CODE=$?
 if [ "$EXIT_CODE" -gt 0 ]
 then
-  echo "\e[31m*** Fix phpstan errors ***\e[0m"
+  echo "\033[31m *** Fix phpstan errors ***\e[0m"
+  echo "\033[31m *** Aborting commit ***"
   exit $EXIT_CODE
 fi
 echo "*** Phpstan finished without errors ***"
 
 echo "*** Run tests ***"
-composer test
+TEST_OUTPUT=$(php artisan test --coverage)
+TEST_COVERAGE=$(echo "$TEST_OUTPUT" | grep "Total: " | awk '{print $2}')
+echo "$TEST_OUTPUT"
+
 EXIT_CODE=$?
 if [ "$EXIT_CODE" -gt 0 ]
 then
-  echo "\e[31m*** Fix tests ***\e[0m"
+  echo "\033[31m *** Fix tests ***\e[0m"
+  echo "\033[31m *** Aborting commit ***"
   exit $EXIT_CODE
+fi
+
+## Will increase when some of the generic classes and methods are used
+COVERAGE_THRESHOLD=90.0
+
+if [ $(bc -l <<<"$TEST_COVERAGE") '<' $COVERAGE_THRESHOLD ]
+then
+  echo "\033[31m *** Not enough test coverage (Global Coverage Required: $COVERAGE_THRESHOLD%) ***"
+  echo "\033[31m *** Aborting commit ***"
+  exit 1
 fi
 echo "*** Tests finished without errors"

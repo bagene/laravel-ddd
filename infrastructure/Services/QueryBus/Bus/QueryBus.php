@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Infrastructure\Services\QueryBus\Bus;
 
+use App\Shared\Response\ErrorResponse;
 use Illuminate\Bus\Dispatcher;
 use Infrastructure\Services\QueryBus\Contracts\QueryBusInterface;
 use Infrastructure\Services\QueryBus\Contracts\QueryInterface;
@@ -20,7 +21,7 @@ final readonly class QueryBus implements QueryBusInterface
     /**
      * @throws QueryNotFoundException
      */
-    public function ask(QueryInterface $query): QueryResponseInterface
+    public function ask(QueryInterface $query): QueryResponseInterface|ErrorResponse
     {
         if (! $this->bus->getCommandHandler($query)) {
             throw new QueryNotFoundException('Query Handler not found');

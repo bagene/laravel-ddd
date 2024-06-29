@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Shared\Response\ErrorResponse;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 use Infrastructure\Services\CommandBus\Contracts\CommandBusInterface;
@@ -31,9 +32,16 @@ abstract class Controller
             $commandClass::fromValidatedRequest($request)
             : new $commandClass();
 
+        $status = 200;
+        $response = $this->commandBus->dispatch($command);
+
+        if ($response instanceof ErrorResponse) {
+            $status = $response->getCode();
+        }
+
         return response()->json([
-            'data' => $this->commandBus->dispatch($command)?->toArray(),
-        ]);
+            'data' => $response?->toArray(),
+        ], $status);
     }
 
     /**
@@ -47,12 +55,14 @@ abstract class Controller
 
         $response = $this->queryBus->ask($query);
 
-        if ($wrapInData) {
-            return response()->json([
-                'data' => $response->toArray(),
-            ]);
+        $status = 200;
+
+        if ($response instanceof ErrorResponse) {
+            $status = $response->getCode();
         }
 
-        return response()->json($response->toArray());
+        return response()->json([
+            'data' => $response->toArray(),
+        ], $status);
     }
 }

@@ -15,8 +15,6 @@ interface RepositoryInterface
 
     public function transaction(callable $callback): mixed;
 
-    public function findNextUuid(): string;
-
     public function create(AbstractDTO $dto): Model;
 
     public function update(Model $model, AbstractDTO $dto): Model;
