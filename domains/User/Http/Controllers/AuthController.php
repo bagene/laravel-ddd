@@ -30,7 +30,7 @@ class AuthController extends Controller
         file: 'infrastructure/Schema/Auth/Login/invalid-login-payload.json',
         status: 422,
     )]
-    public function login(LoginRequest $request): ?JsonResponse
+    public function login(LoginRequest $request): JsonResponse
     {
         return $this->dispatch($request, LoginCommand::class);
     }

@@ -26,7 +26,7 @@ abstract class Controller
     /**
      * @param  class-string<CommandInterface>  $commandClass
      */
-    protected function dispatch(?FormRequest $request = null, string $commandClass = self::COMMAND_CLASS): ?JsonResponse
+    protected function dispatch(?FormRequest $request = null, string $commandClass = self::COMMAND_CLASS): JsonResponse
     {
         $command = $request !== null ?
             $commandClass::fromValidatedRequest($request)

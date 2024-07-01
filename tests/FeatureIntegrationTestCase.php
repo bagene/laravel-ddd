@@ -16,9 +16,14 @@ abstract class FeatureIntegrationTestCase extends BaseTestCase
 
     public const GET_METHOD = 'GET';
 
-    protected function setAuth(): self
+    private User $adminUser;
+
+    protected function setAuth(?User $user = null): self
     {
-        $user = User::factory()->create();
+        /** @var User $user */
+        $user = $user ?: User::factory()->create();
+
+        $this->adminUser = $user;
 
         $token = $user->createToken('test')->plainTextToken;
 
