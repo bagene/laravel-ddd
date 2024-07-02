@@ -7,8 +7,9 @@ namespace Domains\Company\Response;
 use App\Shared\Traits\StaticConstructor;
 use App\Shared\Traits\ToArray;
 use Infrastructure\Services\CommandBus\Contracts\CommandResponseInterface;
+use Infrastructure\Services\QueryBus\Contracts\QueryResponseInterface;
 
-final class CompanyResponse implements CommandResponseInterface
+final class CompanyResponse implements CommandResponseInterface, QueryResponseInterface
 {
     use StaticConstructor, ToArray;
 

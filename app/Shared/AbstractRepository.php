@@ -65,9 +65,15 @@ abstract class AbstractRepository implements RepositoryInterface
         return $model;
     }
 
-    public function find(string|int $id): ?Model
+    /**
+     * {@inheritDoc}
+     */
+    public function find(string|int $id, array $with = []): ?Model
     {
-        return $this->model->query()->find($id);
+        return $this->model
+            ->query()
+            ->with($with)
+            ->find($id);
     }
 
     /**

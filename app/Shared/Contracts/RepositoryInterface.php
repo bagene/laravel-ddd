@@ -19,7 +19,10 @@ interface RepositoryInterface
 
     public function update(Model $model, AbstractDTO $dto): Model;
 
-    public function find(string|int $id): ?Model;
+    /**
+     * @param  string[]  $with
+     */
+    public function find(string|int $id, array $with = []): ?Model;
 
     /**
      * @param  string[]  $with

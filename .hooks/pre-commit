@@ -43,7 +43,7 @@ then
 fi
 
 ## Will increase when some of the generic classes and methods are used
-COVERAGE_THRESHOLD=90.0
+COVERAGE_THRESHOLD=95.0
 
 if [ $(bc -l <<<"$TEST_COVERAGE") '<' $COVERAGE_THRESHOLD ]
 then

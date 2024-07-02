@@ -61,6 +61,10 @@ abstract class Controller
             $status = $response->getCode();
         }
 
+        if (! $wrapInData) {
+            return response()->json($response->toArray(), $status);
+        }
+
         return response()->json([
             'data' => $response->toArray(),
         ], $status);

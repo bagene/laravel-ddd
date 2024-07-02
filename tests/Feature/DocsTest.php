@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Tests\FeatureIntegrationTestCase;
 
 class DocsTest extends FeatureIntegrationTestCase
@@ -26,12 +27,17 @@ class DocsTest extends FeatureIntegrationTestCase
         foreach (Route::getRoutes() as $route) {
             $uri = $route->uri;
             $method = $route->methods[0];
+            $routeParams = $route->parameterNames();
+
+            foreach ($routeParams as $param) {
+                $uri = Str::replaceFirst("{{$param}}", ":$param", $uri);
+            }
 
             if ($method === 'HEAD' || in_array($uri, self::EXCLUDED_ROUTES)) {
                 continue;
             }
 
-            $this->assertContains($uri, $endpoints, "Endpoint $method $uri has no documentation");
+            $this->assertContains("$method $uri", $endpoints, "Endpoint $method $uri has no documentation");
         }
     }
 
@@ -40,7 +46,8 @@ class DocsTest extends FeatureIntegrationTestCase
         foreach ($data['item'] as $item) {
             $url = data_get($item, 'request.url.path');
             if ($url) {
-                $endpoints[] = $url;
+                $method = data_get($item, 'request.method');
+                $endpoints[] = "$method $url";
             }
 
             if (isset($item['item'])) {

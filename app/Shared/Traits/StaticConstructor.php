@@ -30,7 +30,13 @@ trait StaticConstructor
 
     public static function fromValidatedRequest(FormRequest $request): static
     {
-        return static::fromArray($request->validated());
+        /** @var array<string,mixed> $routeParams */
+        $routeParams = $request->route()?->parameters();
+
+        return static::fromArray([
+            ...$routeParams,
+            ...$request->validated(),
+        ]);
     }
 
     public static function fromQueryParameters(Request $request): static

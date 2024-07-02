@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domains\Company\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCompanyRequest extends FormRequest
+class CompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

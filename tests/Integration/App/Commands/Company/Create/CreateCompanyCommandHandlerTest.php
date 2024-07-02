@@ -41,6 +41,12 @@ final class CreateCompanyCommandHandlerTest extends FeatureIntegrationTestCase
         $this->assertSame('Company Name', $response->getName());
         $this->assertSame('Company Description', $response->getDescription());
         $this->assertEquals($response->getCompanyOwner(), $this->user->toArray());
+
+        $this->assertDatabaseHas('companies', [
+            'name' => 'Company Name',
+            'description' => 'Company Description',
+            'company_owner_id' => $this->user->id,
+        ]);
     }
 
     public function testInvokeReturnSuccessWithoutCompanyOwnerId(): void
@@ -58,5 +64,11 @@ final class CreateCompanyCommandHandlerTest extends FeatureIntegrationTestCase
         $this->assertSame('Company Name', $response->getName());
         $this->assertSame('Company Description', $response->getDescription());
         $this->assertEquals($response->getCompanyOwner(), $this->user->toArray());
+
+        $this->assertDatabaseHas('companies', [
+            'name' => 'Company Name',
+            'description' => 'Company Description',
+            'company_owner_id' => $this->user->id,
+        ]);
     }
 }
